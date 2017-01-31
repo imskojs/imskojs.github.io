@@ -65,9 +65,9 @@ npm install webpack/webpack#<tagname/branchname>
 
 여기서 중요한것은 webpack을 `--global`로 install하는것은 best practice가 아니다.
 
-그렇다고 project의 local로 install했다면 `./node_modules/.bin/webpack` 이라고 써서 사용해야 하니 불편하다. (TODO: 이거 사실인가 확인)
+그렇다고 project의 local로 install했다면 `./node_modules/.bin/webpack` 이라고 써서 사용해야 하니 불편하다. (TODO: 사실확인)
 
-그래서 보통 `package.json`에서 아래와 같이 쓰면 project에 local로 install 된 webpack을 자동으로 사용한다. (TODO: 이거 사실인가 확인)
+그래서 보통 `package.json`에서 아래와 같이 쓰면 project에 local로 install 된 webpack을 자동으로 사용한다. (TODO: 사실확인)
 
 ```js
 {
@@ -77,6 +77,8 @@ npm install webpack/webpack#<tagname/branchname>
 }
 ```
 
-위처럼 쓰는 이유는 오로지 하나 `./node_modules/.bin/webpack --help`으로 terminal에서 쓰는것 보다 `npm run webpack` 쓰는것이 더편하기 때문이다.
+위처럼 쓰는 이유는 오로지 하나 terminal에서 `./node_modules/.bin/webpack --help`으로 쓰는것 보다 `npm run webpack` 쓰는것이 더편하기 때문이다.
+
+npm script는 local에 있는 `node_modules`부터 체크한다. (TODO: 사실확인)
 
 
