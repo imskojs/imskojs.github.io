@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 왜 Webpack을 써야하나. 
+title: Webpack 완전 필수만 알고 바로 시작하기.
 published: true
 ---
 
