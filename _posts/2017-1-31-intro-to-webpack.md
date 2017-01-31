@@ -10,6 +10,7 @@ bundle loader가 무엇인지 설명하기 전에 웹개발하면서 이건 아�
 
 브라우저에서 `window`는 어느 파일에서나 보이는 global variable이다. 이런 기능을 사용하여 서로 다른 JavaScript file에서 jQuery간은 libarary를 사용 할수 있는것이다.
 예)
+
 ```html
 <html>
   <head>
@@ -33,6 +34,7 @@ bundle loader가 무엇인지 설명하기 전에 웹개발하면서 이건 아�
 
 bundle loader는 위 로딩되는 `<script>`들을 하나의 file로 묶는(bundle)다.
 예를 들어 위에서 보인 HTML 예제는 다음과 같이 바뀔수 있다.
+
 ```html
 <html>
   <head>
