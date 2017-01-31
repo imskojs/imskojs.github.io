@@ -8,7 +8,8 @@ bundle loader가 무엇인지 설명하기 전에 웹개발하면서 이건 아�
 
 웹브라우저에서는 jQuery같은 library를 `<script>` tag를 사용하여 사용한다. `<script>` tag를 사용하여 library를 load하면 jQuery 같은경우 `$` 라는 object이 window에 달라 붙는다. (`window.$` 가 생기는 것이다.) 
 
-브라우저에서 `window`는 어느 파일에서나 보이는 global variable이다. 이런 기능을 사용하여 서로 다른 JavaScript file에서 jQuery간은 libarary를 사용 할수 있는것이다.
+브라우저에서 `window`는 어느 파일에서나 보이는 global variable이다. 이런 기능을 사용하여 서로 다른 JavaScript file에서 jQuery같은 libarary를 사용 할수 있는것이다.
+
 예)
 
 ```html
@@ -61,3 +62,21 @@ npm install webpack@<version> --save-dev
 ## 또는 완전_최신(Bleeding Edge)을 install하려면.
 npm install webpack/webpack#<tagname/branchname>
 ```
+
+여기서 중요한것은 webpack을 `--global`로 install하는것은 best practice가 아니다.
+
+그렇다고 project의 local로 install했다면 `./node_modules/.bin/webpack` 이라고 써서 사용해야 하니 불편하다. (TODO: 이거 사실인가 확인)
+
+그래서 보통 `package.json`에서 아래와 같이 쓰면 project에 local로 install 된 webpack을 자동으로 사용한다. (TODO: 이거 사실인가 확인)
+
+```js
+{
+  scripts: {
+    webpack: 'webpack --help'
+  }
+}
+```
+
+위처럼 쓰는 이유는 오로지 하나 `./node_modules/.bin/webpack --help`으로 terminal에서 쓰는것 보다 `npm run webpack` 쓰는것이 더편하기 때문이다.
+
+
