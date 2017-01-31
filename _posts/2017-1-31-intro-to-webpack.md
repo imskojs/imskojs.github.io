@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 왜 Webpack을 써야하나. 
 published: true
 ---
