@@ -49,8 +49,8 @@ bundle loader는 위 로딩되는 `<script>`들을 하나의 file로 묶는(bund
 위 예제의 포인트는 `<script>` tag가 기존에 아무리 많이 있다해도 하나로 바꿀수 있다는것이다. 그리고 중요한것은 순서를 신경써지 않아도 되고 사용하지 않는 script는 알아서 빼준다는것! 왜 이제 나온것이냐 할정도로 참 깔끔하다.
 
 
-그리고 이 `<script>` tag의 순서가 굉장히 중요하다. 
 ## Webpack install하기.
+
 ```bash
 ## webpack 2 install하기.
 npm install webpack@beta --save-dev
