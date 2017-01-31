@@ -1,7 +1,8 @@
 ---
+title: 왜 Webpack을 써야하나. 
 published: true
 ---
-## 왜 Webpack을 써야하나.
+
 Webpack은 bundle loader이다. 웹개발자로서 bundle loader라고 들으면 알아 듣기가 힘들다. 완전 새로운 개념이기 때문이다. 
 
 bundle loader가 무엇인지 설명하기 전에 웹개발하면서 이건 아닌거 같은면 한가지의 예를 들어 보자.
@@ -71,8 +72,8 @@ npm install webpack/webpack#<tagname/branchname>
 
 ```js
 {
-  scripts: {
-    webpack: 'webpack --help'
+  "scripts": {
+    "webpack": "webpack --help"
   }
 }
 ```
@@ -81,4 +82,55 @@ npm install webpack/webpack#<tagname/branchname>
 
 npm script는 local에 있는 `node_modules`부터 체크한다. (TODO: 사실확인)
 
+## `webpack.config.js` 사용하기
 
+`webpack.config.js`에서 아래를 씁니다.
+
+```js
+var path = require('path');
+
+module.exports = {
+  entry: './app/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
+`package.json`에서 아래를 씁니다.
+
+```js
+{
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js"
+  }
+}
+```
+이렇게 하면 이제 `./app/index.js`에서 사용하는 `import` statement가 작동을 합니다. 
+
+`Node.js`에서 사용하는 것처럼 `npm_modules`에 있는 library들은 path없이 또는 `import` 하면 됩니다.
+
+즉 만약 `jQuery`를;
+
+```bash
+npm install --save jQuery
+```
+
+로 install했다면
+
+`./app/index.js` 파일에서 
+
+```js
+import $ from 'jQuery'
+```
+
+를 쓰면 webpack이 `node_modules` 안에서 알아서 가지고 옵니다.
+
+만약 library가 npm 이 아닌 다른 package manager로 install 되었다면 file path를 지정해 주어야 합니다;
+
+```js
+import $ from './vendor/jquery.js'
+```
+
+이상 webpack 기초 였습니다.
