@@ -76,4 +76,41 @@ module.exports = config;
 "Webpack compiler야, 만약 `.js` 또는 `.jsx` 를 import하면 bundle로 만들기 전에 `babel-loader`를 사용하여 transform 해줘!"
 
 
+## Plugins
+TODO: 설명더 필요
+
+Plugin은 bundling이 완료된 chunk에 통채로 적용되는 것입니다.
+Plugin을 사용하는 방법은 npm install로 우선 install한후 require로 import하여 사용하면 됩니다. 
+
+또한 webpack자체에 내장되어 있는 core plugin도 있습니다.
+
+예)
+
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
+const webpack = require('webpack'); //to access built-in plugins
+const path = require('path');
+
+const config = {
+  entry: './path/to/my/entry/file.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'my-first-webpack.bundle.js'
+  },
+  module: {
+    rules: [
+      {test: /\.(js|jsx)$/, use: 'babel-loader'}
+    ]
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'})
+  ]
+};
+
+module.exports = config;
+```
+
+
+
 
