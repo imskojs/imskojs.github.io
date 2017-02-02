@@ -16,3 +16,41 @@ Code Splitting을 하게되면 특정 코드들은 유저가 특정 행동을 �
 
 ## CSS Code Splitting
 Webpack을 `css-loader`를 사용하여 CSS를 JavaScript file에 import 할수 있다. 그리고 이 JavaScript file loading되는 HTML에 이 CSS가 반영 된다. (TODO: how css gets loaded)
+JS와 함께 bundle되어 loading될시의 단점은 Browser가 기본 적으로 가지고 있는 asyncronouse loading과 parallel loading 기능을 못쓴다는 것이다.
+
+Webpack은 CSS를 `extract-text-webpack-plugin` 과 `css-loader`를 사용하여 따로 bundling할수 있다.
+
+예) [Webpack Doc 참조]
+
+```js
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+
+module.exports = function () {
+    return {
+        entry: './main.js',
+        output: {
+            path: path.resolve(__dirname, 'dist'),
+            filename: 'bundle.js'
+        },
+        module: {
+            rules: [{
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ExtractTextPlugin.extract({
+                    loader: 'css-loader',
+                    options: {
+                      sourceMap: true
+                    }
+                })
+            }]
+        },
+        devtool: 'source-map',
+        plugins: [
+            new ExtractTextPlugin({ filename: 'bundle.css', disable: false, allChunks: true })
+        ]
+    }
+}
+```
+
+위 처럼 `module.rules.use`에 `ExtractTextPlugin.extract`를 사용하면 app에서 사용하는 모든 `.css`를 `plugins`의 `filename`에서 define한 `bundle.css` file로 bundle한다.
