@@ -47,10 +47,14 @@ module.exports = function () {
         },
         devtool: 'source-map',
         plugins: [
-            new ExtractTextPlugin({ filename: 'bundle.css', disable: false, allChunks: true })
+            new ExtractTextPlugin({ 
+              filename: 'bundle.css',
+              disable: false,
+              allChunks: true 
+            })
         ]
     }
 }
 ```
 
-위 처럼 `module.rules.use`에 `ExtractTextPlugin.extract`를 사용하면 app에서 사용하는 모든 `.css`를 `plugins`의 `filename`에서 define한 `bundle.css` file로 bundle한다.
+위 처럼 `module.rules.use`에 `ExtractTextPlugin.extract`를 사용하면 app에서 사용하는 모든 `.css`를 `plugins`의 `filename`에서 define한 `bundle.css` file로 bundle한다. (TODO: path for bundle.css)
