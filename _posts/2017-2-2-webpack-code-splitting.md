@@ -3,6 +3,7 @@ layout: post
 title: Webpack Code 나누기(Splitting).
 published: true
 ---
+이 글에서는 CSS Code splitting, Library Code Splitting, `require.ensure`를 사용한 Code Splitting을 다룬다.
 
 Webpack의 기초 사용 용도는 여러 `<script>`를 하나의 `bundle.js`로 만드는것이다. 그러나 이렇게 하게되면 `bundle.js`는 엄청 커질수가 있다. 처음에는 이렇게 생각할수 있다. `bundle.js`가 커지더라도 서버에 요청 한번만 보내니 여러 script를 나누어 요청을 보내는것 보다 한번 요청을 보내어 `bundle.js`를 가지고 오는것이 빠를 것이라고. 그러나 그렇지가 않다. (TODO: max cachable size)
 
