@@ -4,7 +4,7 @@ title: Webpack 개념.
 published: true
 ---
 
-Webpack을 사용하기 전에 아래 4가지 개념을 알면 편합니다.
+이 글에서는 Webpack을 사용하기 전에 Webpack의 4가지 기본 개념을 본다.
 
 
 ## Entry

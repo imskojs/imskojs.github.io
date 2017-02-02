@@ -4,6 +4,8 @@ title: Webpack 완전 필수만 알고 바로 시작하기.
 published: true
 ---
 
+이 글은 Webpack이란 왜 나왔고 완전 기초적 사용 방법을 본다.
+
 Webpack은 bundle loader이다. 웹개발자로서 bundle loader라고 들으면 알아 듣기가 힘들다. 완전 새로운 개념이기 때문이다. 
 
 bundle loader가 무엇인지 설명하기 전에 웹개발하면서 이건 아닌거 같은면 한가지의 예를 들어 보자.
