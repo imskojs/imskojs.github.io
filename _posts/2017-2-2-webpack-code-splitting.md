@@ -58,3 +58,44 @@ module.exports = function () {
 ```
 
 위 처럼 `module.rules.use`에 `ExtractTextPlugin.extract`를 사용하면 app에서 사용하는 모든 `.css`를 `plugins`의 `filename`에서 define한 `bundle.css` file로 bundle한다. (TODO: path for bundle.css)
+
+
+## Library Code Splitting
+보통 app은 많은 third party library를 사용한다. 이런 library code들은 전혀 자주 바뀌지 않는다. 우리가 쓰는 코드들만 자주 바뀔 뿐이다.
+
+이렇게 자주 바뀌지 않는 코드를 궂이 자주 바뀌는 개발자의 code와 함께 bundling할 필요는 없는것이다. 왜 그러냐면 바뀌지 않는 코드는 cache를 할수 있기 때문이다. cache를 하면 서버에 따로 요청을 보내 새로 script를 가지고 올 필요가 없다. 
+
+vendor file과 app file을 나누기 위해서 Webpack은 일단 2개의 file을 만든다. 그리고 이 2개의 file에서 공통된것들을 빼와 `CommonChunkPlugin` plugin을 사용하여 2개의 file에 공통적으로 있는 file을 빼와 새로운 file을 만든다.
+
+여기서 중요한것은 Webpack은 build할때만다 새로운 hash를 file에 준다. 이렇게 되면 app이 만들어 질때마다 공통된 library를 만들지만 browser는 이것을 cache못한다. hash가 바뀌는 같은 file이 아니기 때문이다.
+
+이것을 방지 하기위해 우리는 `CommonChunkPlugin` 에 공통적인 file을 bundling하는 `vender`와 runtime에 생성되는 hash를 manifest file에 저장 하면 된다. 이렇게 되면 3개의 file(`vender`, `main`, `manifest`)이 생기지만 우리가 필요한 `vendor`와 `main`만 사용하면 되는것이다.
+
+예)
+
+```js
+var webpack = require('webpack');
+var path = require('path');
+
+module.exports = function(env) {
+    return {
+        entry: {
+            main: './index.js',
+            vendor: 'moment'
+        },
+        output: {
+            filename: '[chunkhash].[name].js',
+            path: path.resolve(__dirname, 'dist')
+        },
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin({
+                // Specify the common bundle's name.
+                names: ['vendor', 'manifest'] 
+            })
+        ]
+    }
+};
+```
+
+
+
