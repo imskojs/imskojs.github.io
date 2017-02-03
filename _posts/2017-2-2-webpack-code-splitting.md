@@ -97,5 +97,71 @@ module.exports = function(env) {
 };
 ```
 
+## `require.ensure()` Code Splitting
 
+Webpack은 `require.ensure()`를 사용하여 build할때 따로 `chunk`를 만들수 있습니다.
+
+이렇게 만들어진 `chunk`는 필요할때 jsonp를 사용하여 load할수 있습니다.
+
+예)
+
+```
+// file structure
+
+|
+js --|
+|    |-- entry.js
+|    |-- a.js
+|    |-- b.js
+webpack.config.js
+|
+dist
+
+```
+
+```js
+// entry.js
+
+require('a');
+require.ensure([], function(require){
+    require('b');
+});
+
+// a.js
+console.log('***** I AM a *****');
+
+// b.js
+console.log('***** I AM b *****');
+```
+
+```js
+// webpack.config.js
+var path = require('path');
+
+module.exports = function(env) {
+    return {
+        entry: './js/entry.js',
+        output: {
+            filename: 'bundle.js',
+            path: path.resolve(__dirname, 'dist')
+        }
+    }
+}
+```
+
+위 코드를 실행하면 `entry.js`와 `a.js`는 `bundle.js`로 bundle이 된다. 이 `bundle.js`는 `webpack.config.js`에서 만드는 것이다.
+
+`b.js`는 `0.bundle.js`로 bundle이 된다. 이 `0.bundle.js` 는 `entry.js`에서 사용한 `require.ensure`가 만든 bundle 이다.
+
+#### Dependencies as Parameter
+
+```js
+require.ensure(['./a.js'], function(require) {
+    require('./b.js');
+});
+```
+
+위 코드에서는 `a.js`와 `b.js`는 bundle이 따로 되어 main bundle에서 빠저 나온것이다.
+중요한 포인트는 depenency로 받은 file은 execute되지 않는다. `a.js`의 내용들을 사용할수 있지만 execute만 않된것 뿐이다.
+(TODO: how to execute `a.js`)
 
