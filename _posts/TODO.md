@@ -1,4 +1,5 @@
-https://webpack.js.org/guides/code-splitting-require/
+https://webpack.js.org/concepts/hot-module-replacement/
+https://webpack.js.org/guides/hmr-react/
 https://webpack.js.org/guides/
 https://webpack.js.org/api/node/
 https://webpack.js.org/configuration/
