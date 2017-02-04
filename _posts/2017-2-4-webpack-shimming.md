@@ -111,6 +111,7 @@ eval("var globalStuff = {a: 1};")
 
 ## `noParse` option
 CommonJS version이 없는 legacy code를 `dist` folder에 그냥 넣고 싶다면 그 module을 `noParse`에 flag하면 된다. 그렇게 하면 webpack은 그 module을 parsing않하고 그냥 넣을것이다.
+(TODO: if it's already in node_modules wouldn't it use CommonJS?)
 
 예)
 
