@@ -121,6 +121,7 @@ module.exports = {
 ```
 
 `webpack-dev-server`가 `dist` folder에 있는것들을 쏴주기 때문에 `dist` folder에 아래 file을 넣어 주어야 합니다.
+
 ```html
 <!-- index.html -->
 
