@@ -149,3 +149,5 @@ module.exports = {
 ```
 
 `npm start`를 치면 이제 `webpack-dev-server`가 작동합니다.
+`http://localhost:8080`에 가면 hot loading되는 react app이 작동합니다.
+
