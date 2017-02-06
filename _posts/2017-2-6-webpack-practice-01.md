@@ -49,7 +49,7 @@ node_modules/.bin/webpack
 ```
 
 ## 폴더 구조
-`webpack-demo`의 folder구조는 다음과 같다.
+`webpack-demo`의 folder구조는 다음과 같다.  
 ![Folder Structure](/images/webpack-practice-01-folder-structure.png)
 
 *app/component.js*
