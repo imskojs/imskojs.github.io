@@ -1,0 +1,94 @@
+---
+layout: post
+title: Webpack Authoring Libraries
+published: true
+---
+
+이 글에서는 Webpack 환경을 포함 어느 환경에서나 쓸수있는 library만드는 법을 본다.
+
+우리는 여기서 Webpack을 사용하여 library를 bundle할것이다. 그리고 이렇게 bundle된 library는 여러 환경에서 쓸수 있게 하는 것이 목표이다.
+
+아래의 file은 우리가 bundle하고 싶은 library이다.
+
+*src/index.js*
+
+```js
+import _ from 'lodash';
+import numRef from './ref.json';
+
+export function numToWord(num) {
+  return _.reduce(numRef, (accum, ref) => {
+    return ref.num === num ? ref.word : accum;
+  }, '');
+};
+
+export function wordToNum(word) {
+  return _.reduce(numRef, (accum, ref) => {
+    return ref.word === word && word.toLowerCase() ? ref.num : accum;
+  }, -1);
+};
+```
+
+위 `src/index.js`를 보면 `lodash`와 `./ref.json`을 import하고 있는것을 볼수 있다.
+위 library를 우리는 브라우저 환경에서 script tag로 아래와 같이 사용할 것이다.
+우리가 원하는것은 `lodash`를 포함한 bundle이 아니다. `lodash` library는 따로 사용자가 script tag로 또는 `npm install`로 load해야 한다.
+
+*index.html*
+
+```html
+
+<html>
+<script src="https://unpkg.com/lodahs.js"></script>
+<script src="https://unpkg.com/webpack-numbers.js"></script>
+<script>
+    webpackNumbers.wordToNum('Five') //output is 5
+</script>
+</html>
+
+```
+
+또한 browser환경이 아닌 Node 환경에서도 아래와 같이 사용할 것이다.
+
+```js
+// Node에서 사용시 `lodash`가 `node_modules`에 있어야 한다.
+// `lodash`는 `webpack-numbers`에서 `require`로 import하도록 쓰여있다.
+// 즉 import _ from 'lodash' 는 Wepback이 var _ = require('lodash')로
+// bundle된 file에 transpile하며 이후 Node.js가 require를 handling한다.
+// 이때 `node_modules`에 `lodash`가 없다면 error가 날것이다. (TODO: error or warn like unmet dependency)
+var webpackNumbers = require('webpack-numbers');
+webpackNumbers.wordToNum('Five'); // out is 5
+```
+
+브라우저와 node환경에서 위에서 만든 `webpack-numbers`를 사용하려면 Webpack Config를 다음과 같이 쓰면 된다.
+
+*webpack.config.js*
+
+```js
+
+var path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'webpack-numbers.js',
+    // 브라우저 환경에서 `webpack-numbers.js`를 `script` tag로 load 하면
+    // `webpackNumbers`라는 global `var`iable을 만든다.
+    library: 'webpackNumbers',
+    libraryTarget: 'var'
+  },
+
+  // 아래 code는 lodash가 install또는 script tag로 먼저 가지고 와야한다고 설정하는 것이다.
+  externals: {
+    lodash: {
+      commonjs: 'lodash',
+      commonjs2: 'lodash', // TODO: import statement?
+      root: '_'
+    }
+  }
+};
+
+```
+
+
+
