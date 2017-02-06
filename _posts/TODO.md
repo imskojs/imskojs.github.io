@@ -1,5 +1,4 @@
-https://webpack.js.org/guides/author-libraries/
-https://webpack.js.org/guides/
+https://webpack.js.org/guides/webpack-and-typescript/
 https://webpack.js.org/api/node/
 https://webpack.js.org/configuration/
 https://webpack.js.org/configuration/dev-server/

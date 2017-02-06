@@ -117,6 +117,6 @@ Node 환경에서도 `require`로 사용할수 있게 하기 위해서는 단 `p
 }
 ```
 
-
+위 `module` key는 지금 (2017/02/06)에는 별 의미가 없다. 나중에 Node가 browser환경에 native하게 ES2015+를 사용하여 module들을 import할수 있는 시기를 위한것이다. (TODO:그런날이 온다?)
 
 
