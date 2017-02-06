@@ -50,17 +50,7 @@ node_modules/.bin/webpack
 
 ## 폴더 구조
 `webpack-demo`의 folder구조는 다음과 같다.
-
-```
-app/
-  index.js
-  component.js
-build/
-package.json
-webpack.config.js
-```
-
-![Jekyll Now Theme Screenshot](/images/jekyll-now-theme-screenshot.jpg "Jekyll Now Theme Screenshot")
+![Folder Structure](/images/webpack-practice-01-folder-structure.png)
 
 *app/component.js*
 
