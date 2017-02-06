@@ -90,5 +90,33 @@ module.exports = {
 
 ```
 
+위 Webpack setting은 `dist/webpack-numbers.js`로 bundle을 만든다.
+
+이제 이 `dist/webpack-numbers.js` 는 브라우저 환경에서 `script` tag로 사용할수 있다.
+
+Node 환경에서도 `require`로 사용할수 있게 하기 위해서는 단 `package.json`에 `main` file (Node의 `entry` 같은 녀석)을 설정해 주면 된다.
+
+*package.json*
+
+```js
+{
+  "main": "dist/webpack-numbers.js"
+}
+```
+
+위 와 더불어 미래 Node가 Front-end JavaScript 세상을 다루게 될것이다. 그리고 브라우저 환경에서도 `ES2015` JavaScript module import를 할수 있게 될것을 대비하여 아래와 같이 `package.json`에 Front-End용 `entry`를 설정하자. `module` property는 지금 안사용되지만 미래를 위한것이다.
+
+그럼 위 `package.json`은 아래 처럼 `module` property가 하나 더 생기게 된다.
+
+*package.json*
+
+```js
+{
+  "main": "dist/webpack-numbers.js",
+  "module": "src/index.js"
+}
+```
+
+
 
 
