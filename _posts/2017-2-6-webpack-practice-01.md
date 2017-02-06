@@ -1,11 +1,10 @@
 ---
 layout: post
-title: Webpack 실습 #01
+title: Webpack 실습 1
 published: true
 ---
 
-이 글은 Webpack 실습 Series의 1편이다.
-다루는것: 기초 개발환경 Setup
+Webpack 실습 Series의 1편: 기초 개발환경 Setup
 
 ## Project Folder Setting 하기
 
@@ -66,5 +65,25 @@ node_modules/.bin/webpack
 그렇게 하기 위해서는 `wepback.config.js`를 건드려야 한다.
 
 ## `index.html`이 없다?!
-Webpack을 처음 접할때 가장 당황스러운것은 `index.html`이 없다는 것이다.
+Webpack을 처음 접할때 가장 당황스러운것은 `index.html`이 없다는 것이다. `index.html`이 없어 어디서 어떻게 `script` tag와 `link` tag를 가지고 오는지 도저히 이해를 못하겠다. 
+
+이것은 webpack이 직접 `index.html`을 관리한다. 관린한다라는 뜻은  `script` tag와 `link` tag를알아서 넣어준다는것.
+
+Webpack이 이렇게 `index.html`을 generate하기 위해서는 `html-webpack-plugin`을 사용하여야 한다.
+
+```bash
+npm install --save-dev html-webpack-plugin
+```
+
+## `webpack.config.js`
+`app` folder에 있는 file들을 bundle하기 위해서는 `webpack.config.js`에 config setting을 해주어야 한다.
+
+최소한 setting을 해주어야 하는것은 `entry`와 `output`이다.
+
+`webpack.config.js`
+
+![webpack-config](/images/webpack1-webpack-config.png)
+
+`entry`의 `app` key의 value는 file을 가르켜야 한다 하지만 위에서 보면 `app` key의 value는 file이 아닌 folder이다. 이렇게 folder를 가르키는 경우 Webpack은 Node.js의 convension을 사용하여 `index.js`를 가르킨다.
+
 
