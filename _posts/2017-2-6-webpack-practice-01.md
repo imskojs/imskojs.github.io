@@ -50,22 +50,16 @@ node_modules/.bin/webpack
 
 ## 폴더 구조
 `webpack-demo`의 folder구조는 다음과 같다.
- 
+
 ![Folder Structure](/images/webpack-practice-01-folder-structure.png)
 
 *app/component.js*
 
-```js
-export default function () {
-  const element = document.createElement('h1');
-
-  element.innerHTML = 'Hello world';
-
-  return element;
-}
-```
+![component.js](/images/webpack1-component.png)
 
 *app/index.js*
+
+![index.js](/images/webpack1-index.png)
 
 우리가 하려는것은 `app/`에 있는 file들을 bundle하여 `build/`로 넘기는 것이다.
 
