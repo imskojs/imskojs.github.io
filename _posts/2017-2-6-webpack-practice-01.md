@@ -51,7 +51,7 @@ node_modules/.bin/webpack
 ## 폴더 구조
 `webpack-demo`의 folder구조는 다음과 같다.
 
-![Folder Structure](/images/webpack-practice-01-folder-structure.png)
+![Folder Structure](/images/webpack1-folder-structure.png)
 
 *app/component.js*
 
@@ -64,4 +64,7 @@ node_modules/.bin/webpack
 우리가 하려는것은 `app/`에 있는 file들을 bundle하여 `build/`로 넘기는 것이다.
 
 그렇게 하기 위해서는 `wepback.config.js`를 건드려야 한다.
+
+## `index.html`이 없다?!
+Webpack을 처음 접할때 가장 당황스러운것은 `index.html`이 없다는 것이다.
 
