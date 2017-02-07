@@ -42,7 +42,7 @@ node_modules/.bin/webpack
 ```js
 {
   "scripts": {
-    "webpack": "webpack"
+    "build": "webpack"
   }
 }
 ```
@@ -84,6 +84,20 @@ npm install --save-dev html-webpack-plugin
 
 ![webpack-config](/images/webpack1-webpack-config.png)
 
-`entry`의 `app` key의 value는 file을 가르켜야 한다 하지만 위에서 보면 `app` key의 value는 file이 아닌 folder이다. 이렇게 folder를 가르키는 경우 Webpack은 Node.js의 convension을 사용하여 `index.js`를 가르킨다.
+`entry`의 `app` key의 value는 file을 가르켜야 한다 하지만 위에서 보면 `app` key의 value는 file이 아닌 folder이다. 이렇게 folder를 가르키는 경우 Webpack은 Node.js의 convension에 따라 `index.js`를 가르킨다.
 
+## Webpack 실행
 
+이제 아래 command를 사용하여 webpack을 실행하면 `build` folder에 bundling 된 app.js가 생긴다. 이 이름은 `webpack.config.js`의 `output`에 정의된 `[name].js` 이 정해 준것이다. `entry`에서의 key name이 output file의 [name]으로 정해지는것이다.
+
+```bash
+npm run build
+```
+
+![build structure](/images/webpack1-build-files.png)
+
+아래 `build/index.html`은 `HtmlWebpackPlugin`이 만들어 준것이다. `HtmlWebpackPlugin`이 알아서 script tag를 넣어준다.
+
+![build index](/images/webpack1-build-index.png)
+
+이상 Webpack 실습 1: 기초 개발환경 Setup이었다.
