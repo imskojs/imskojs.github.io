@@ -1,0 +1,57 @@
+---
+layout: post
+title: Webpack 실습 2
+published: true
+---
+
+Webpack 실습 Series의 2편: `webpack-dev-server` 사용하기
+
+웹개발을 하면서 HTML, CSS, 또는 JS를 고치고 브라우저를 refresh하여 바뀐것을 반영하는경우가 많았다. 
+
+우리나라에서는 최근들어 live-reload라는 plugin을 사용하기 시작한것으로 안다. (이미 외국에서는 2년전부터 사용함.)
+
+Webpack으로도 live-reload같은 효과를 plugin을 install하여 사용할수 있다. 그러나 그럴 필요가 없는것이 webpack은 live-reload보다 더 좋은 기능을 사용할수 있기 때문이다. 
+
+Webpack을 실행할시 watch option을 줄수 있다. `webpack --watch`는 live-reload랑 상관없이 file이 바뀌면 bundle을 자동으로 만드는 역활을 한다.
+
+`webpack-dev-server`는 이 `webpack --watch`기능을 사용하여 편한 개발환경을 제공한다.
+
+`webpack-dev-server`는 browser refresh 없이 update된 내용을 보영줄수 있다. 이것은 SPA를 만들때 정말로 필요한 기능이다. Browser refresh를 SPA에서 하게되면 현제 program state가 바뀌기 때문이다. program state의 바뀜 없이 update를 적용할수 있다면 SPA 개발환경이 정말 편해질듯 하다.
+
+browser refresh 없이 update를 적용하는것을 *Hot Module Replacement (HMR)* 라고 한다.
+
+## `webpack-dev-server` 시작하기
+
+`webpack-dev-server`는 npm module이다. install하자. 
+
+```bash
+npm install webpack-dev-server --save-dev
+```
+
+`webpack-dev-server`는 `webpack`가 마찬가지로 npm bin directory에 실행가능한 command를 만든다.
+
+`webapck-dev-server`와 `webpack`은 command line에서 `--env` argument로 받은 값을 `webpack.config.js`에서 `module.exports`하는 function의 first argument로 받는다.
+
+```js
+// package.json
+{
+  "scripts": {
+    "start": "webpack-dev-server --env development",
+    "build": "webpack --env.target production"
+  }
+}
+```
+
+위처럼 `--env`의 value는 string또는 object일수 있다. `--env development`로 사용하면 string이 전달되고 `--env.target production`으로 사용하면 object이 전달된다.
+
+예)
+
+![Webpack with funciton](/images/webpack1-with-env.png)
+
+
+
+
+
+
+
+
