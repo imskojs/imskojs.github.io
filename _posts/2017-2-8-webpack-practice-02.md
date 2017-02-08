@@ -52,7 +52,7 @@ npm install webpack-dev-server --save-dev
 
 아래처럼 다르게 실행시 `env`가 object일수도 있고 string일수도 있는것을 볼수 있다.
 
-![webpack-env-dev](/images/webpack2-env-dev)
+![webpack-env-dev](/images/webpack2-env-dev.png)
 
 ![webpack-env-prod](/images/webpack2-env-prod.png)
 
