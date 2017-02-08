@@ -48,6 +48,14 @@ npm install webpack-dev-server --save-dev
 
 ![Webpack with funciton](/images/webpack1-with-env.png)
 
+위처럼 `webpack.config.js`를 바꿔 보았다. 마지막에 export되는 function을 보면 첫번째 argument로 env를 받는다. 이것을 실험삼아 console.log하고 있다.
+
+아래처럼 다르게 실행시 `env`가 object일수도 있고 string일수도 있는것을 볼수 있다.
+
+![webpack-env-dev](/images/webpack2-env-dev)
+
+![webpack-env-prod](/images/webpack2-env-prod.png)
+
 
 
 
