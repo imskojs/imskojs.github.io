@@ -42,6 +42,7 @@ CSS를 JS로 바꿔 반영하는게 신기 해서 build된 code를 보면;
 
 위 처럼 JavaScript file안에 우리의 CSS rule이 반영 된것을 볼수 있다. (정확이 어떻게 apply되는지는 알바 아니고)
 
+`webpack-dev-server`를 사용하면 CSS를 마음대로 고치며 browser refresh없이 바로 반영 된다.
 
 
 
