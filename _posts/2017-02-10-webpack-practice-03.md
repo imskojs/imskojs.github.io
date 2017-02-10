@@ -40,6 +40,8 @@ CSS를 JS로 바꿔 반영하는게 신기 해서 build된 code를 보면;
 
 ![build app](/images/webpack3-inline-css.png)
 
+위 처럼 JavaScript file안에 우리의 CSS rule이 반영 된것을 볼수 있다. (정확이 어떻게 apply되는지는 알바 아니고)
+
 
 
 
