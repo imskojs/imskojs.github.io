@@ -52,12 +52,23 @@ npm install webpack-dev-server --save-dev
 
 아래처럼 다르게 실행시 `env`가 object일수도 있고 string일수도 있는것을 볼수 있다.
 
-![webpack-env-dev](/images/webpack2-env-dev.png)
 
 ![webpack-env-prod](/images/webpack2-env-prod.png)
 
+![webpack-env-dev](/images/webpack2-env-dev.png)
 
+`npm start`를 하게되면 `webpack-dev-server`를 이용하여 file이 바뀔시 마다 bundle이 recompile되고 browser가 refresh 된다.
 
+지금 까지는 Hot Module Replacement가 작동 안하고 있다. (browser refresh 없이 JavaScript를 update하는것.)
+
+이제 HMR를 setting해보자.
+
+## HMR configure하기.
+`webpack-dev-server`에 Hot Module Replacement를 setting하기 위해서는 configuration에 `devServer`와 `HotModuleReplacementPlugin`을 사용하여야 한다.
+
+한가지 방법으로는 이렇게 하는수가 있다.
+
+![webpack-hmr](/images/webpack1-naive-HMR.png)
 
 
 
