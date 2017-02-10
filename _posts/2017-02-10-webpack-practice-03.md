@@ -21,3 +21,9 @@ Webpack에서 CSS를 loading하기 위해서는 `css-loader`를 사용하여야 
 ```bash
 npm install css-loader style-loader --save-dev
 ```
+
+아래 처럼 `webpack.config.js`를 바꿔보자. 중요한것은 `css-loader`와 `style-loader`는 이 config파일에서 require로 loading 할 필요가 없다는 것이다.
+
+![module loader](/images/webpack2-module-loader.png)
+
+
