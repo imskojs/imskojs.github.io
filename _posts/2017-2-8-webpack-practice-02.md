@@ -103,5 +103,6 @@ Webpack은 HMR를 `module.hot`에 global로 expose한다.
 
 ![webpack2-HMR-reject](/images/webpack2-HMR-reject.png)
 
+이상 `webpack-dev-server`사용하기 였다.
 
 
