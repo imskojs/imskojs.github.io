@@ -84,5 +84,24 @@ npm install webpack-dev-server --save-dev
 
 ![webpack2-named-modules-log](/images/webpack2-named-modules-log.png)
 
+결국에는 file change는 detect했는데 hot loading을 못했다는 message이다. 이제 hot loading이 작동 되도록 바꿔보자
+
+## HMR Inerface
+
+Webpack은 HMR를 `module.hot`에 global로 expose한다.
+`module.hot.accept`를 app code에서 사용하여 바뀐것을 수동으로 handling해 주어야 한다. (NOTE: React, Angular2 같은 framework는 이것이 이미 setting 되있어 우리가 할필요가 없다.)
+
+![webpack2-HMR-inerface](/images/webpack2-HMR-interface.png)
+
+이제는 아래처럼 잘작동한다. 허나 `component.js`가 아닌 `index.js`를 바꾸면 작동이 않된다. 왜냐하면 `index.js`의 change를 hot loading하도록 `module.hot.accept`를 setting 안했기 때문이다.
+
+`component.js`변경시 hot load 잘됨;
+
+![webpack2-HMR-accepted](/images/webpack2-HMR-accept.png)
+
+`index.js`변경시 hot load 않됨.
+
+![webpack2-HMR-reject](/images/webpack2-HMR-reject.png)
+
 
 
