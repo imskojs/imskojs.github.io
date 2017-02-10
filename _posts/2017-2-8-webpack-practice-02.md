@@ -66,11 +66,23 @@ npm install webpack-dev-server --save-dev
 ## HMR configure하기.
 `webpack-dev-server`에 Hot Module Replacement를 setting하기 위해서는 configuration에 `devServer`와 `HotModuleReplacementPlugin`을 사용하여야 한다.
 
-한가지 방법으로는 이렇게 하는수가 있다.
+한가지 방법으로는 이렇게 하는수가 있다.(아직 HMR이 제대로 작동 안한다.)
 
-![webpack-hmr](/images/webpack1-naive-HMR.png)
+![webpack-hmr](/images/webpack2-naive-HMR.png)
 
+이렇게 하게되면 일단 webpack이 error를 뛰우고 update가 hot load 되지 않는다. 아래와 같은 message가 console에 뜬다.
 
+![webpack-hmr-error](/images/webpack2-HMR-error.png)
+
+일단 error message에 `39 -> 36 -> 88`이라는 알아 들을수 없는 내용이 쓰이고 있다. 
+
+이 메세지를 조금도 잘알아 듣기 위해 `NamedModules` plugin을 깔아보자.
+
+![webpack2-named-modules](/images/webpack2-named-modules.png)
+
+다시 code를 고치면 숫자로 나왔던 부분이 이제는 file 이름으로 나와 아래처럼 알아 들을수있는 message가 나온다.
+
+![webpack2-named-modules-log](/images/webpack2-named-modules-log.png)
 
 
 
