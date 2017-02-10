@@ -26,4 +26,20 @@ npm install css-loader style-loader --save-dev
 
 ![module loader](/images/webpack2-module-loader.png)
 
+그리고 아래 처럼 `app/main.css`를 만들고;
+
+![main css](/images/webpack3-main-css.png)
+
+`app/index.js`에서 CSS를 import하면 CSS가 inline JavaScript로 import 되어 반영 된다.
+
+![import css](/images/webpack3-import-css.png)
+
+CSS를 JS로 바꿔 반영하는게 신기 해서 build된 code를 보면;
+
+`build/app.js`중 일부;
+
+![build app](/images/webpack3-inline-css.png)
+
+
+
 
