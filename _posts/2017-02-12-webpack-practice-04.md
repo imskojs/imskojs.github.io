@@ -56,3 +56,42 @@ npm install --save-dev extract-text-webpack-plugin@beta
 이 알아서 `app.css`를 `build/index.html`에 loading해주는것을 볼수있다. 아래처럼;
 
 ![index-html](/images/webpack3-index-html.png)
+
+
+## Autoprefixing
+(TODO: autoprefixing 설명 구찮음)
+
+autoprefixing을 사용하려면 여러 방법이 있지만 config가 조금더 자유로운 PostCSS loader를 사용해서 setting해보자.
+
+```bash
+npm install --save-dev postcss-loader autoprefixer
+```
+
+아래처럼 `webpack.config.js`를 만들면된다.
+
+![autoprefixer](/images/webpack4-autoprefixer.png)
+
+위 예에서 loader로 string이 아닌 Object가 들어간것을 볼수 있다. 그리고 이 loader 자체에 plugins를 넣는것도. 나중에 자세히 보자.
+
+postcss는 sass-loader가 output으로 준 css file을 가지고 작업하는것을 주목하자.
+(TODO: use postcss as a main rather than sass)
+
+`app/main2.scss`를 아래와 같이 바꾸고;
+
+![main2-scss](/images/webpack4-main2-scss.png)
+
+build를 하면 아래 처럼 prefixing되어 나오는것을 볼수 있다.
+
+![app-css](/images/app-css.png)
+
+원하는 browser를 setting하는 방법으로는 `package.json`에 `browserslist` key를 만들어 만들어 원하는 browser를 array에 넣어주면 된다.
+
+예) 아래는 Internet Explorer를 무시하라고 autoprefixer에게 전달하는 방법이다.
+
+![browserslist](/images/browserslist.png)
+
+
+
+
+
+  
