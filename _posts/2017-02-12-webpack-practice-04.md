@@ -22,25 +22,25 @@ npm install --save-dev extract-text-webpack-plugin@beta
 
 아래 예를 보자.
 
-![extract-css-loader](/images/webpack3-extract-css-loader)
+![extract-css-loader](/images/webpack3-extract-css-loader.png)
 
 (TODO: fallback 정확히 뭐지? 없어도 잘만돌아감)
 
 위는 loader를 setting하고, 아래는 plugin을 setting 한다.
 
-![extract-css-plugin](/images/webpack3-extract-css-plugin)
+![extract-css-plugin](/images/webpack3-extract-css-plugin.png)
 
 그리고 아래 처럼 `app/main2.scss`를 만들고
 
-![main2-scss](/images/webpack3-main2-scss)
+![main2-scss](/images/webpack3-main2-scss.png)
 
 `app/component.js`에서 아래처럼 import를 하자.
 
-![component-js](/images/webpack3-component-js)
+![component-js](/images/webpack3-component-js.png)
 
 그러면 아래처럼 `build/app.css`가 생기게 된다.
 
-![app-css](/images/webpack3-app-css)
+![app-css](/images/webpack3-app-css.png)
 
 여기서 build된 css이름은 `webpack.config.js`의 `entry`이름 마다 하나씩 생기는 것이다. 이것을 세팅해주는 것은 `plugin` key에 `new ExtractTextPlugin('[name].css')`의 `[name]`부분이다.
 지금 같은 경우 `entry:{app: PATH.app}`으로 되어있는것을 보고 `build/app.css`를 만드는 것이다.
@@ -54,4 +54,4 @@ npm install --save-dev extract-text-webpack-plugin@beta
 
 이 알아서 `app.css`를 `build/index.html`에 loading해주는것을 볼수있다. 아래처럼;
 
-![index-html](/images/webpack3-index-html)
+![index-html](/images/webpack3-index-html.png)
