@@ -45,4 +45,44 @@ CSS를 JS로 바꿔 반영하는게 신기 해서 build된 code를 보면;
 `webpack-dev-server`를 사용하면 CSS를 마음대로 고치며 browser refresh없이 바로 반영 된다.
 
 
+## CSS Scoping
+CSS의 가장 큰 단점은 global scope에 있다는 것이다. 이것을 local scope으로 즉 `import` statement별로 그 import한 file에서만 반영되게 하는 기능이 CSS Modules에서 가능하다.
+
+`css-loader`는 import별로 CSS를 반영할수 있게하는 option이 있다.
+여기서 중요한것은 이 CSS scope은 *class* selector에만 적용된다.
+(TODO: pseudo selector?)
+또한 이 local class는 element에 binding을 직접 해주어야만 한다.
+내가 생각했던 file별로 import하면 자동으로 그 file에만 작동 되는것이 아닌가 보다.
+
+예) 아래의 CSS 규칙이 있다면;
+
+```css
+/* app.main.css */
+
+body {
+  background: cornsilk;
+}
+
+.redButton {
+  background: red;
+}
+```
+
+위 `.redButton`을 local로 반영하려면 다음과 같이 하면 된다.
+
+```js
+// app/component.js
+
+import styles from './main.css';
+
+element.className = styles.redbutton;
+```
+
+`body` CSS 규칙은 아직도 global 로 반영된다.(class가 아니어서 그렇다)
+반면 `.redButton`은 local scope으로 오로지 `app/component.js`에서만 반영이 되고 global scope으로 적용되지 않는다.
+
+## Sass Loading하기
+
+
+
 
