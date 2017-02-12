@@ -57,6 +57,39 @@ npm install --save-dev extract-text-webpack-plugin@beta
 
 ![index-html](/images/webpack3-index-html.png)
 
+## JavaScript를 통하지 않은 CSS loading
+솔직히 CSS가 `.js` file에서 import 되고 또 잠시 동안이나마 JS로 inline styling이 된다는것은 뭔가 좀 아닌거 같다. CSS는 `.css`의 file안에서 (또는 scss/less etc) 시작하여 `.css` file로 끝나는 것을 원할수 있다.
+
+css file들만 globbing해서 `entry`로 주면 그 css file을 하나의 file로 만들어 주는것은 조금만 생각해보면 이해가 가는 Webpack의 방식이다.
+
+일단 `.css` 또는 `.scss`의 file들을 가지고 오려면 `glob`을 install하자.
+
+```bash
+npm install --save-dev glob
+```
+
+```js
+const glob = require('glob');
+
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build'),
+  // array로 resolve된다.
+  style: glob.sync('./app/**/*.css'),
+};
+
+const common = {
+  entry: {
+    app: PATHS.app,
+    style: PATHS.style
+  }
+  ...
+}
+```
+
+위처럼 config하고 build하면 `build/style.css`가 만들어진다. 추가로 `build/style.js`가 만들어 지는데 이건 무시하자(별 쓸모 없음).
+
+`glob`은 alphabetic순으로 file들을 가지고 온다. 순서가 중요하다면 `.css` file하나만 entry에 넣고 `@import`로 그 file들을 순서대로 가지고 올수 있다.
 
 ## Autoprefixing
 (TODO: autoprefixing 설명 구찮음)
@@ -82,16 +115,12 @@ postcss는 sass-loader가 output으로 준 css file을 가지고 작업하는것
 
 build를 하면 아래 처럼 prefixing되어 나오는것을 볼수 있다.
 
-![app-css](/images/app-css.png)
+![app-css](/images/webpack4-app-css.png)
 
 원하는 browser를 setting하는 방법으로는 `package.json`에 `browserslist` key를 만들어 만들어 원하는 browser를 array에 넣어주면 된다.
 
 예) 아래는 Internet Explorer를 무시하라고 autoprefixer에게 전달하는 방법이다.
 
-![browserslist](/images/browserslist.png)
+![browserslist](/images/webpack4-browserslist.png)
 
-
-
-
-
-  
+## 쓸모 없는 CSS 지우기
