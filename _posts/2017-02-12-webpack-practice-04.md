@@ -46,6 +46,7 @@ npm install --save-dev extract-text-webpack-plugin@beta
 지금 같은 경우 `entry:{app: PATH.app}`으로 되어있는것을 보고 `build/app.css`를 만드는 것이다.
 
 한가지더 기존에 쓰고 있던 
+
 ```js
   new HtmlWebpackPlugin({
     title: 'Webpack demo',
