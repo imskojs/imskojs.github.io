@@ -4,7 +4,7 @@ title: Webpack 실습 3
 published: true
 ---
 
-Webpack 실습 Series의 3편: CSS Load하기
+Webpack 실습 Series의 3편: CSS Loading 기초
 
 Webpack은 CSS를 hard refresh 없이 바꿀수 있다. 이글에서는 hot loading CSS를 배워 보도록 하겠다.
 
@@ -128,5 +128,16 @@ Webpack은 css또는 sass/less에서 `@import`를 보면 JS에서의 import stat
 
 ## Source map 사용하기
 Source map은 `css-loader?sourceMap`으로 setting후 `output.publicPath`를 development server로 setting하면 된다.
+(TODO: example)
+
+이상 Webpack css loading 기초였다.
+
+
+
+
+
+
+
+
 
 
