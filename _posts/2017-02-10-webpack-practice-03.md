@@ -98,6 +98,7 @@ npm install --save-dev sass-loader node-sass
 ```
 
 `webpack.config.js`
+
 ```js
 {
   module: {
@@ -111,6 +112,21 @@ npm install --save-dev sass-loader node-sass
 }
 ```
 
+## Webpack의 CSS import 이해하기
+Webpack은 css또는 sass/less에서 `@import`를 보면 JS에서의 import statement처럼 lookup을 시작한다.
 
+```css
+@import "./variables.scss";
+```
+
+위는 그냥 보통 sass 만으로도 되는것이라 별로 특별한것도 아니다. 허나 Webpack은 `node_modules` folder안에 있는 scss를 가지고 올수 있다. 
+`node_modules`안에서 `scss`를 찾으라는 명령은 다음과 같이 `~`를 prefixing함으로서 가능하다.
+
+```css
+@import "~bootstrap/sass/bootstrap"
+```
+
+## Source map 사용하기
+Source map은 `css-loader?sourceMap`으로 setting후 `output.publicPath`를 development server로 setting하면 된다.
 
 
