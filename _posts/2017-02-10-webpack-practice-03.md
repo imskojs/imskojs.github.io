@@ -54,6 +54,8 @@ CSS의 가장 큰 단점은 global scope에 있다는 것이다. 이것을 local
 또한 이 local class는 element에 binding을 직접 해주어야만 한다.
 내가 생각했던 file별로 import하면 자동으로 그 file에만 작동 되는것이 아닌가 보다.
 
+CSS module을 반영하려면 `css-loader`를 사용하는 부분에서 `css-loader?modules` option을 setting해야한다.
+
 예) 아래의 CSS 규칙이 있다면;
 
 ```css
@@ -81,7 +83,33 @@ element.className = styles.redbutton;
 `body` CSS 규칙은 아직도 global 로 반영된다.(class가 아니어서 그렇다)
 반면 `.redButton`은 local scope으로 오로지 `app/component.js`에서만 반영이 되고 global scope으로 적용되지 않는다.
 
+단점은 element에 직접적으로 assign을 하지 않으면 반영이 않된다는것. (이거 너무 불편해서 쓸라나?)
+
 ## Sass Loading하기
+
+`loader`는 array의 뒤에서부터 앞으로 반영된다.
+더 쉽게 생각하는 방법은 `styleLoader(cssLoader())` 이런 식으로 반영된다 생각하면 편하다.
+
+`sass-loader`는 `.sass` 또는 `.scss`를 css로 바꾼다 즉.
+`styleLoader(cssLoader(sassLoader()))`이런 식으로 반영되는것이다. <small>왠지 elm같음</small>
+
+```bash
+npm install --save-dev sass-loader node-sass
+```
+
+`webpack.config.js`
+```js
+{
+  module: {
+    rules: [
+      {
+        test: /\.css$|\.sass$|\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  }
+}
+```
 
 
 
