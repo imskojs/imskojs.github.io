@@ -170,6 +170,19 @@ build를 해보면 아래 처럼 `build/app.css`가 커지는것을 볼수 있�
 
 ![purecss](/images/webpack4-purecss.png)
 
+위 코드는 약 700줄이 넘는 CSS rule들이다.
 
+이제 `purifycss-webpack`을 사용해보자.
 
+```js
+const PurifyCSSPlugin = require('purifycss-webpack');
+```
+
+![purifycss](/images/webpack4-purifycss.png)
+
+이 setting후 build를 하면 사용하지 않는 css rule들은 전부 지워진다. 우리 코드에서 `purecss` framework에서 사용한 class는 `pure-button` 밖에 없다.
+
+그렇기에 아래 처럼 `.pure-button`과 사용하는 tag들만 빼고 전부다 지워진다.
+
+![app-css](/images/webpack4-app-css-purified.png)
 
