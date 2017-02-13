@@ -4,7 +4,7 @@ title: Webpack 실습 4
 published: true
 ---
 
-Webpack 실습 Series의 4편: CSS loading 최적화
+Webpack 실습 Series의 4편: CSS loading 최적화 기초
 
 ## CSS file 따로 save하기
 지금것 모든 style은 JS에 inline으로 반영됬다. 이대로 사용하면 않된다. HTML, CSS, JS는 따로 관리하는게 best practice다. (react는 이걸 무시한다. 그래서 별로 정이 안간다. 그래도 따라야지 대세인데 음?)
@@ -186,3 +186,6 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 
 ![app-css](/images/webpack4-app-css-purified.png)
 
+약 700줄의 코드에서 140줄로 줄어 들었다.
+
+이상 CSS loading 최적화 기초 였다.
