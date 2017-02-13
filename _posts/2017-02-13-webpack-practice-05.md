@@ -29,10 +29,16 @@ webpack은 기본적으로 모든 css 규칙의 `url()`를 handling하는것은 
 npm install --save-dev file-loader url-loader
 ```
 
-사이즈가 25kB(25000byte)이하인 `.jpg`나 `.png` 파일을 로딩 하기 위해서는 `url-loader`를 다음과 같이 세팅 해주어야 한다.
-이렇게 하면 `file-loader`는 알아서 25kB보다 큰 file을 `[name].[ext]`로 output해준다. 즉 `url-loader`의 option으로 setting해준 `name` key의 value가 `file-loader`로 넘어 가는것이다. 여기서 중요한것은 `file-loader`를 어디에도 사용 안했다는것 오로지 `npm install file-loader`를 했다는것에 있다.
+사이즈가 5kB(5000 byte)이하인 `.jpg`나 `.png` 파일을 로딩 하기 위해서는 `url-loader`를 다음과 같이 세팅 해주어야 한다.
+이렇게 하면 `file-loader`는 알아서 5kB보다 큰 file을 `[name].[ext]`로 output해준다. 
 
-Output file은 다음과 같이 `[path][name].[hash].[ext]` option들이 있다. 예) `./images/[name][hash].[ext]`로 설정해 줄수 있다.
+즉 `url-loader`의 option으로 setting해준 `name` key의 value가 `file-loader`로 넘어 가는것이다. 
+
+여기서 중요한것은 `file-loader`를 어디에도 사용 안했다는것 오로지 `npm install file-loader`를 했다는것에 있다.
+
+Output file은 다음과 같이 `[path][name].[hash].[ext]` option들이 있다. 
+
+예) `./images/[name][hash].[ext]`로 설정해 줄수 있다.
 
 예)
 `test.png` image를 만들어 아래처럼 `app/test.png`로 저장하자. 이 이미지는 5kB이다
@@ -60,7 +66,7 @@ JavaScript코드에서도 된다는것! 이건 직접 해보삼.
 (TODO: HTML src에 있는 녀석도 되나?)
 
 
-
+## Image 최적화 하기.
 
 
 
