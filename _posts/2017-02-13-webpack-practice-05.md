@@ -67,6 +67,13 @@ JavaScript코드에서도 된다는것! 이건 직접 해보삼.
 
 
 ## Image 최적화 하기.
+간단하게 loader loading하면 끝. 설명 구찮음.
+
+```bash
+npm install --save-dev image-webpack-loader
+```
+
+![webpack5-image-opt](/images/webpack5-image-opt.png)
 
 
 
