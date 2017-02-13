@@ -124,3 +124,52 @@ build를 하면 아래 처럼 prefixing되어 나오는것을 볼수 있다.
 ![browserslist](/images/webpack4-browserslist.png)
 
 ## 쓸모 없는 CSS 지우기
+보통 CSS framework를 사용하면 쓰는 부분보다 않쓰는 부분이 더 많이 있다.
+않쓰는 부분을 자동으로 지워줬으면 할때 `PurifyCSS`를 사용하면 된다.
+
+일단 간단한 CSS library인 purecss를 install해보자.
+
+```bash
+npm install --save purecss
+```
+
+그리고 `purifycss-webpack`을 install하자.
+
+```bash
+npm install --save-dev purifycss-webpack
+```
+
+간단한 예제로 test를 해보면;
+
+`app/index.js`
+
+```js
+import 'purecss';
+import './main.css';
+import component from './component';
+
+...
+```
+
+그리고 `purecss`에 있는것을 반영하자.
+
+`app/component.js`
+
+```js
+module.exports = function () {
+  const element = document.createElement('h1');
+
+  element.className = 'pure-button';
+  element.innerHTML = 'Hello world';
+
+  return element;
+};
+```
+
+build를 해보면 아래 처럼 `build/app.css`가 커지는것을 볼수 있다.
+
+![purecss](/images/webpack4-purecss.png)
+
+
+
+
