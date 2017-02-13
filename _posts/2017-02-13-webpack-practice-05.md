@@ -56,7 +56,7 @@ CSS에 `url()`을 사용하여 위 저장된 `test.png`를 가지고 오자.
 
 아래처럼 `build/images/test.png`가 만들어 진다.
 
-![webpack5-build-images-test](/images/build-images-test.png)
+![webpack5-build-images-test](/images/webpack5-build-images-test.png)
 
 기존에 css 규칙은 `build`로 넘어오면서 url path가 바뀐것을 아래처럼 볼수가 있다.
 
