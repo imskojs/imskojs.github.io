@@ -4,7 +4,7 @@ title: Webpack 실습 5
 published: true
 ---
 
-Webpack 실습 Series의 5편: Image loading
+Webpack 실습 Series의 5편: Image와 Font load하기
 
 자질 구레한 asset들을 request하는것 만큼 app을 느리게 만드는 방법도 없다.
 
@@ -91,6 +91,8 @@ Font loading는 보통 CSS에서 다음과 같이 사용한다.
 compile된 CSS는 다음과 같이 볼수 있다.
 
 ![webpack5-build-css](/images/webpack5-build-css.png)
+
+이상 Image와 font loading하기 였다.
 
 
 
