@@ -75,6 +75,23 @@ npm install --save-dev image-webpack-loader
 
 ![webpack5-image-opt](/images/webpack5-image-opt.png)
 
+## Font loading하기
+Font loading는 보통 CSS에서 다음과 같이 사용한다.
+
+![webpack5-main-css-font](/images/webpack5-main-css-font.png)
+
+`webpack.config.js`에서 font를 다음과 같이 로딩 할수 있다. note: `css-loader`가 `url()`을 load하기에 가능한 일이다.
+
+![webpack5-config-font](/images/webpack5-config-font.png)
+
+결과는 아래와 같이 `build/fonts/`에서 볼수 있으며
+
+![webpack5-build-font](/images/webpack5-build-font.png)
+
+compile된 CSS는 다음과 같이 볼수 있다.
+
+![webpack5-build-css](/images/webpack5-build-css.png)
+
 
 
 
